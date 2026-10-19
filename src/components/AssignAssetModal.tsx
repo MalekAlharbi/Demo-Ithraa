@@ -30,10 +30,10 @@ export default function AssignAssetModal({ onClose }: AssignAssetModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-slate-950/40 p-4" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
-      <section role="dialog" aria-modal="true" aria-labelledby="assign-asset-title" className="my-auto w-full max-w-lg rounded-2xl bg-white shadow-2xl">
-        <div className="flex items-start justify-between border-b border-slate-100 px-6 py-5">
-          <div><h2 id="assign-asset-title" className="text-lg font-extrabold text-slate-900">إسناد عهدة جديدة</h2><p className="mt-1 text-sm text-slate-400">اختر الموظف وأدخل تفاصيل العهدة</p></div>
-          <button type="button" onClick={onClose} aria-label="إغلاق" className="rounded-lg px-2 py-1 text-xl text-slate-400 hover:bg-slate-100">×</button>
+      <section role="dialog" aria-modal="true" aria-labelledby="assign-asset-title" className="my-auto w-full max-w-lg brand-card rounded-2xl bg-white shadow-2xl">
+        <div className="modal-heading relative flex items-start justify-between border-b border-slate-100 px-6 py-5">
+          <div><h2 id="assign-asset-title" className="text-lg font-extrabold text-brand-800">إسناد عهدة جديدة</h2><p className="mt-1 text-sm text-slate-500">اختر الموظف وأدخل تفاصيل العهدة</p></div>
+          <button type="button" onClick={onClose} aria-label="إغلاق" className="rounded-lg px-2 py-1 text-xl text-slate-400 hover:bg-slate-100 hover:text-slate-700">×</button>
         </div>
         <form onSubmit={submit} className="space-y-4 px-6 py-5">
           <label className="block text-sm font-semibold text-slate-700">الموظف<select value={employeeId} onChange={(event) => setEmployeeId(event.target.value)} className={fieldClass} required><option value="" disabled>اختر الموظف</option>{employees.map((employee) => <option key={employee.id} value={employee.id}>{employee.fullName}</option>)}</select></label>

@@ -44,7 +44,7 @@ export default function EmployeeAssets({ employeeId, employeeName }: EmployeeAss
   const allAssets = useCustodyStore((state) => state.assets);
   const assets = allAssets.filter((asset) => asset.employeeId === employeeId);
   return (
-    <section className="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-soft">
+    <section className="overflow-hidden brand-card rounded-2xl border border-slate-100 bg-white shadow-soft">
       <div className="flex items-center justify-between px-5 py-4">
         <h2 className="font-bold text-slate-800">{employeeName}</h2>
         <span className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-bold text-slate-500">{assets.length} عهدة</span>

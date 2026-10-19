@@ -3,13 +3,50 @@
 @tailwind utilities;
 
 :root {
-  font-family: 'Tajawal', 'Cairo', sans-serif;
-  color: #172b27;
-  background: #f8fafc;
+  font-family: 'Cairo', 'Tajawal', sans-serif;
+  color: #123538;
+  background: #f6f9f8;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
 
 * { box-sizing: border-box; }
-body { margin: 0; min-width: 320px; min-height: 100vh; }
+body { margin: 0; min-width: 320px; min-height: 100vh; background: #f6f9f8; }
+.app-shell { background: #f6f9f8; }
+.app-main { isolation: isolate; }
 button, a { -webkit-tap-highlight-color: transparent; }
+::selection { color: #fff; background: #008186; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid #00b5a4;
+  outline-offset: 2px;
+}
+.page-heading {
+  position: relative;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid #dce8e6;
+  border-right: 3px solid #c19f79;
+  color: #123538;
+  padding: .25rem 1rem 1rem;
+}
+.page-heading h1 { color: #00585e; font-family: 'Cairo', 'Tajawal', sans-serif; letter-spacing: -.03em; }
+.page-heading-eyebrow { color: #008186; }
+.page-heading-description { color: #587b7a; }
+.page-heading-action { position: relative; z-index: 1; }
+.page-heading-action button, .page-heading-action a {
+  border-color: #006c72;
+  background-color: #006c72;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,72,77,.12);
+}
+.page-heading-action button:hover, .page-heading-action a:hover { background-color: #00585e; }
+.modal-heading {
+  border-color: #e5efed;
+  border-right: 3px solid #c19f79;
+  border-radius: 1rem 1rem 0 0;
+  background: #f3f8f7;
+}
+.brand-section-title { border-right: 3px solid #c19f79; padding-right: .75rem; }
+.brand-card { border: 1px solid #e5efed; background: #fff; box-shadow: 0 8px 24px rgba(0,72,77,.055); }
+table thead { background-color: #e6f4f3; color: #294e50; }
+table tbody tr { transition: background-color .18s ease; }
+input, select, textarea { accent-color: #008186; }

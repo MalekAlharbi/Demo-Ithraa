@@ -78,13 +78,13 @@ export default function EmployeeForm({ employee, onClose }: EmployeeFormProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-slate-950/40 p-4" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
-      <section role="dialog" aria-modal="true" aria-labelledby="employee-form-title" className="my-auto w-full max-w-2xl rounded-2xl bg-white shadow-2xl">
-        <div className="flex items-start justify-between border-b border-slate-100 px-6 py-5">
+      <section role="dialog" aria-modal="true" aria-labelledby="employee-form-title" className="my-auto w-full max-w-2xl brand-card rounded-2xl bg-white shadow-2xl">
+        <div className="modal-heading relative flex items-start justify-between border-b border-slate-100 px-6 py-5">
           <div>
-            <h2 id="employee-form-title" className="text-lg font-extrabold text-slate-900">{employee ? 'تعديل بيانات الموظف' : 'إضافة موظف جديد'}</h2>
-            <p className="mt-1 text-sm text-slate-400">أدخل البيانات الأساسية والمالية للموظف</p>
+            <h2 id="employee-form-title" className="text-lg font-extrabold text-brand-800">{employee ? 'تعديل بيانات الموظف' : 'إضافة موظف جديد'}</h2>
+            <p className="mt-1 text-sm text-slate-500">أدخل البيانات الأساسية والمالية للموظف</p>
           </div>
-          <button type="button" onClick={onClose} aria-label="إغلاق" className="rounded-lg px-2 py-1 text-xl text-slate-400 hover:bg-slate-100">×</button>
+          <button type="button" onClick={onClose} aria-label="إغلاق" className="rounded-lg px-2 py-1 text-xl text-slate-400 hover:bg-slate-100 hover:text-slate-700">×</button>
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className="max-h-[calc(100vh-11rem)] space-y-5 overflow-y-auto px-6 py-5">
           <div className="grid gap-4 sm:grid-cols-2">

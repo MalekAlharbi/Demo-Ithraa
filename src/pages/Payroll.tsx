@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useEmployeeStore } from '../store/employeeStore';
 import type { Employee } from '../types/hr';
+import PageHeading from '../components/PageHeading';
 
 const GOSI_RATE = 9.75;
 const currency = new Intl.NumberFormat('ar-SA', { style: 'currency', currency: 'SAR', maximumFractionDigits: 2 });
@@ -67,19 +68,12 @@ export default function Payroll() {
 
   return (
     <section>
-      <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <p className="mb-2 text-sm font-medium text-slate-400">الرئيسية / الرواتب</p>
-          <h1 className="text-2xl font-extrabold text-slate-900">مسيرات الرواتب</h1>
-          <p className="mt-1 text-sm text-slate-500">احتساب إجمالي الأجور والاستقطاعات وصافي التحويل</p>
-        </div>
-        <button type="button" onClick={() => exportPayrollCsv(rows)} disabled={!rows.length} className="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-50">
+      <PageHeading title="مسيرات الرواتب" description="احتساب إجمالي الأجور والاستقطاعات وصافي التحويل" eyebrow="إدارة الموارد البشرية" actions={<button type="button" onClick={() => exportPayrollCsv(rows)} disabled={!rows.length} className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-sand-500 px-4 py-2.5 text-sm font-bold text-brand-900 shadow-sm transition hover:bg-sand-600 disabled:cursor-not-allowed disabled:opacity-50">
           <span aria-hidden="true">⇩</span> تصدير مسير الرواتب
-        </button>
-      </div>
+        </button>} />
 
       <div className="mb-5 grid gap-4 sm:grid-cols-2">
-        <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-soft">
+        <div className="brand-card rounded-2xl border border-slate-100 bg-white p-5 shadow-soft">
           <p className="text-sm text-slate-500">عدد الموظفين في المسير</p>
           <p className="mt-2 text-2xl font-extrabold text-slate-900">{rows.length}</p>
         </div>
@@ -89,13 +83,13 @@ export default function Payroll() {
         </div>
       </div>
 
-      {missingIbanCount > 0 && <div role="status" className="mb-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">يوجد {missingIbanCount} موظف بدون رقم آيبان. راجع بيانات الموظفين قبل تجهيز التحويلات.</div>}
+      {missingIbanCount > 0 && <div role="status" className="mb-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-sand-600">يوجد {missingIbanCount} موظف بدون رقم آيبان. راجع بيانات الموظفين قبل تجهيز التحويلات.</div>}
 
-      <div className="mb-4 rounded-xl border border-sky-100 bg-sky-50 px-4 py-3 text-xs leading-6 text-sky-800">
+      <div className="mb-4 rounded-xl border border-brand-100 bg-brand-50 px-4 py-3 text-xs leading-6 text-brand-800">
         معدل التأمينات في هذا العرض التجريبي ثابت عند {GOSI_RATE}% من الأساسي وبدل السكن للسعودي، ولا يطبق على غير السعودي. ملف CSV ملخص للتحويل البنكي ولا يمثل ملف حماية الأجور الرسمي.
       </div>
 
-      <div className="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-soft">
+      <div className="overflow-hidden brand-card rounded-2xl border border-slate-100 bg-white shadow-soft">
         <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4">
           <h2 className="font-bold text-slate-800">تفاصيل مسير الرواتب</h2>
           <span className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-bold text-slate-500">ريال سعودي</span>

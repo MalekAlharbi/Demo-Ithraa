@@ -3,6 +3,7 @@ import AssignAssetModal from '../components/AssignAssetModal';
 import EmployeeAssets from '../components/EmployeeAssets';
 import { useEmployeeStore } from '../store/employeeStore';
 import { useCustodyStore } from '../store/custodyStore';
+import PageHeading from '../components/PageHeading';
 
 export default function AssetsDashboard() {
   const employees = useEmployeeStore((state) => state.employees);
@@ -21,13 +22,10 @@ export default function AssetsDashboard() {
 
   return (
     <section>
-      <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
-        <div><p className="mb-2 text-sm font-medium text-slate-400">الرئيسية / إدارة الموارد البشرية</p><h1 className="text-2xl font-extrabold text-slate-900">إدارة العُهد</h1><p className="mt-1 text-sm text-slate-500">متابعة العُهد المسندة إلى موظفي المنشأة</p></div>
-        <button type="button" onClick={() => setModalOpen(true)} className="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-brand-700"><span className="text-lg leading-none">＋</span> إسناد عهدة</button>
-      </div>
+      <PageHeading title="إدارة العُهد" description="متابعة العُهد المسندة إلى موظفي المنشأة" eyebrow="إدارة الأصول والعُهد" actions={<button type="button" onClick={() => setModalOpen(true)} className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-sand-500 px-4 py-2.5 text-sm font-bold text-brand-900 shadow-sm transition hover:bg-sand-600"><span className="text-lg leading-none">＋</span> إسناد عهدة</button>} />
 
       <div className="mb-5 grid gap-4 sm:grid-cols-2">
-        <article className="rounded-2xl border border-slate-100 bg-white p-5 shadow-soft"><p className="text-sm text-slate-500">إجمالي العُهد المصروفة</p><p className="mt-2 text-2xl font-extrabold text-brand-700">{activeCount}</p><p className="mt-1 text-xs text-slate-400">عهدة بحالة نشطة</p></article>
+        <article className="brand-card rounded-2xl border border-slate-100 bg-white p-5 shadow-soft"><p className="text-sm text-slate-500">إجمالي العُهد المصروفة</p><p className="mt-2 text-2xl font-extrabold text-brand-700">{activeCount}</p><p className="mt-1 text-xs text-slate-400">عهدة بحالة نشطة</p></article>
         <article className={`rounded-2xl border p-5 shadow-soft ${lostCount ? 'border-rose-100 bg-rose-50' : 'border-slate-100 bg-white'}`}><p className={`text-sm ${lostCount ? 'text-rose-700' : 'text-slate-500'}`}>العُهد المفقودة</p><p className={`mt-2 text-2xl font-extrabold ${lostCount ? 'text-rose-700' : 'text-slate-900'}`}>{lostCount}</p><p className="mt-1 text-xs text-slate-400">من إجمالي {assets.length} عهدة مسجلة</p></article>
       </div>
 

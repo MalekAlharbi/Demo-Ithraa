@@ -2,6 +2,7 @@ import { useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import DashboardCharts from '../components/DashboardCharts';
 import StatCard from '../components/StatCard';
+import PageHeading from '../components/PageHeading';
 import { useEmployeeStore } from '../store/employeeStore';
 import { useCustodyStore } from '../store/custodyStore';
 import type { AssetType } from '../types/custody';
@@ -61,10 +62,7 @@ export default function Dashboard() {
 
   return (
     <section className="space-y-6">
-      <div className="flex flex-wrap items-end justify-between gap-3">
-        <div><p className="mb-2 text-sm font-medium text-slate-400">نظرة عامة</p><h1 className="text-2xl font-extrabold text-slate-900">لوحة القيادة</h1><p className="mt-1 text-sm text-slate-500">ملخص مؤشرات الموارد البشرية والعُهد</p></div>
-        <p className="text-xs font-medium text-slate-400">آخر تحديث: {new Intl.DateTimeFormat('ar-SA', { dateStyle: 'full' }).format(new Date())}</p>
-      </div>
+      <PageHeading title="لوحة القيادة" description="ملخص مؤشرات الموارد البشرية والعُهد" eyebrow={`نظرة عامة · ${new Intl.DateTimeFormat('ar-SA', { dateStyle: 'full' }).format(new Date())}`} />
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <StatCard title="إجمالي الموظفين" value={activeEmployees.length} detail="الموظفون على رأس العمل" icon="♙" tone="blue" />
@@ -76,7 +74,7 @@ export default function Dashboard() {
       <DashboardCharts saudiCount={saudiCount} nonSaudiCount={nonSaudiCount} assetsByType={assetsByType} />
 
       <div className="grid gap-5 xl:grid-cols-2">
-        <section className="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-soft">
+        <section className="overflow-hidden brand-card rounded-2xl border border-slate-100 bg-white shadow-soft">
           <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4">
             <div><h2 className="font-bold text-slate-800">إجراءات عاجلة</h2><p className="mt-1 text-xs text-slate-400">هويات وإقامات منتهية أو قاربت على الانتهاء</p></div>
             <span className="rounded-full bg-rose-50 px-2.5 py-1 text-xs font-bold text-rose-700">{expiringEmployees.length}</span>
@@ -96,7 +94,7 @@ export default function Dashboard() {
           </div>
         </section>
 
-        <section className="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-soft">
+        <section className="overflow-hidden brand-card rounded-2xl border border-slate-100 bg-white shadow-soft">
           <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4">
             <div><h2 className="font-bold text-slate-800">طلبات إخلاء الطرف المعلقة</h2><p className="mt-1 text-xs text-slate-400">موظفون منتهية خدمتهم ولديهم عُهد غير مسترجعة</p></div>
             <span className="rounded-full bg-amber-50 px-2.5 py-1 text-xs font-bold text-amber-700">{pendingClearance.length}</span>

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useEmployeeStore } from '../store/employeeStore';
 import { useCustodyStore } from '../store/custodyStore';
 import type { AssetStatus } from '../types/custody';
+import PageHeading from '../components/PageHeading';
 
 const statusLabel: Record<AssetStatus, string> = {
   Active: 'مصروفة للموظف',
@@ -10,8 +11,8 @@ const statusLabel: Record<AssetStatus, string> = {
 };
 
 const statusStyle: Record<AssetStatus, string> = {
-  Active: 'bg-amber-50 text-amber-700',
-  Returned: 'bg-emerald-50 text-emerald-700',
+  Active: 'bg-sand-50 text-sand-600',
+  Returned: 'bg-brand-50 text-brand-700',
   Lost: 'bg-rose-50 text-rose-700',
 };
 
@@ -53,13 +54,9 @@ export default function Clearance() {
 
   return (
     <section>
-      <div className="mb-6">
-        <p className="mb-2 text-sm font-medium text-slate-400">الرئيسية / إدارة الموارد البشرية</p>
-        <h1 className="text-2xl font-extrabold text-slate-900">إخلاء الطرف</h1>
-        <p className="mt-1 text-sm text-slate-500">مراجعة المستحقات والعُهد قبل إصدار المخالصة النهائية</p>
-      </div>
+      <PageHeading title="إخلاء الطرف" description="مراجعة المستحقات والعُهد قبل إصدار المخالصة النهائية" eyebrow="إدارة الموارد البشرية" />
 
-      <div className="mb-5 rounded-2xl border border-slate-100 bg-white p-5 shadow-soft">
+      <div className="mb-5 brand-card rounded-2xl border border-slate-100 bg-white p-5 shadow-soft">
         <label htmlFor="clearance-employee" className="block text-sm font-bold text-slate-700">اختر الموظف المنتهية خدمته</label>
         {terminatedEmployees.length ? (
           <select id="clearance-employee" value={selectedEmployeeId} onChange={(event) => { setSelectedEmployeeId(event.target.value); setIssuedEmployeeId(null); }} className="mt-2 w-full max-w-lg rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100">
@@ -70,19 +67,19 @@ export default function Clearance() {
 
       {employee && <>
         <div className="mb-5 grid gap-4 lg:grid-cols-2">
-          <section className="rounded-2xl border border-slate-100 bg-white p-5 shadow-soft">
+          <section className="brand-card rounded-2xl border border-slate-100 bg-white p-5 shadow-soft">
             <div className="mb-4 flex items-center gap-3">
               <span className="grid size-10 place-items-center rounded-xl bg-sky-50 text-lg text-sky-700" aria-hidden="true">HR</span>
               <div><h2 className="font-bold text-slate-800">قسم الموارد البشرية</h2><p className="text-xs text-slate-400">مراجعة الإجازات المستحقة غير المعوضة</p></div>
             </div>
             {leaveDays > 0 ? (
-              <div className="rounded-xl border border-amber-100 bg-amber-50 px-4 py-3 text-sm text-amber-800">توجد إجازات مستحقة غير معوضة: <strong>{leaveDays} أيام</strong>. يلزم مراجعتها ضمن التسوية النهائية.</div>
+              <div className="rounded-xl border border-amber-100 bg-amber-50 px-4 py-3 text-sm text-sand-600">توجد إجازات مستحقة غير معوضة: <strong>{leaveDays} أيام</strong>. يلزم مراجعتها ضمن التسوية النهائية.</div>
             ) : (
               <div className="rounded-xl border border-emerald-100 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-700">لا توجد إجازات مستحقة غير معوضة.</div>
             )}
           </section>
 
-          <section className="rounded-2xl border border-slate-100 bg-white p-5 shadow-soft">
+          <section className="brand-card rounded-2xl border border-slate-100 bg-white p-5 shadow-soft">
             <div className="mb-4 flex items-center gap-3">
               <span className="grid size-10 place-items-center rounded-xl bg-brand-50 text-lg text-brand-700" aria-hidden="true">▣</span>
               <div><h2 className="font-bold text-slate-800">قسم العُهد</h2><p className="text-xs text-slate-400">{employeeAssets.length} عهدة مرتبطة بالموظف</p></div>

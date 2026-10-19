@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom';
+import PageHeading from '../components/PageHeading';
 
 const pageTitles: Record<string, string> = {
   '/': 'لوحة القيادة',
@@ -13,8 +14,7 @@ function Placeholder() {
   const title = pageTitles[pathname] ?? 'الصفحة';
   return (
     <section>
-      <p className="mb-2 text-sm font-medium text-slate-400">الرئيسية / {title}</p>
-      <h1 className="text-2xl font-extrabold text-slate-900">{title}</h1>
+      <PageHeading title={title} description={`إدارة ${title} ضمن منصة إثراء الخير`} eyebrow="مساحة العمل" />
       <div className="mt-6 rounded-2xl border border-dashed border-slate-300 bg-white p-10 text-center shadow-soft">
         <div className="mx-auto grid size-14 place-items-center rounded-2xl bg-brand-50 text-2xl text-brand-600">✦</div>
         <h2 className="mt-4 font-bold text-slate-700">صفحة {title}</h2>
