@@ -65,10 +65,10 @@ export default function Dashboard() {
       <PageHeading title="لوحة القيادة" description="ملخص مؤشرات الموارد البشرية والعُهد" eyebrow={`نظرة عامة · ${new Intl.DateTimeFormat('ar-SA', { dateStyle: 'full' }).format(new Date())}`} />
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard title="إجمالي الموظفين" value={activeEmployees.length} detail="الموظفون على رأس العمل" icon="♙" tone="blue" />
-        <StatCard title="نسبة التوطين" value={`${saudizationRate}%`} detail={`${saudiCount} سعودي من ${activeEmployees.length} موظف نشط`} icon="٪" tone={saudizationTone} />
-        <StatCard title="العُهد النشطة" value={activeAssets.length} detail="عهد لم يتم استرجاعها بعد" icon="▣" tone="green" />
-        <StatCard title="تنبيهات الوثائق" value={expiringEmployees.length} detail="منتهية أو تنتهي خلال 30 يوماً" icon="!" tone={expiringEmployees.length ? 'rose' : 'blue'} />
+        <StatCard title="إجمالي الموظفين" value={activeEmployees.length} detail="الموظفون على رأس العمل" icon="employees" tone="blue" />
+        <StatCard title="نسبة التوطين" value={`${saudizationRate}%`} detail={`${saudiCount} سعودي من ${activeEmployees.length} موظف نشط`} icon="localization" tone={saudizationTone} />
+        <StatCard title="العُهد النشطة" value={activeAssets.length} detail="عهد لم يتم استرجاعها بعد" icon="assets" tone="green" />
+        <StatCard title="تنبيهات الوثائق" value={expiringEmployees.length} detail="منتهية أو تنتهي خلال 30 يوماً" icon="documents" tone={expiringEmployees.length ? 'rose' : 'blue'} />
       </div>
 
       <DashboardCharts saudiCount={saudiCount} nonSaudiCount={nonSaudiCount} assetsByType={assetsByType} />

@@ -81,7 +81,7 @@ export default function Clearance() {
 
           <section className="brand-card rounded-2xl border border-slate-100 bg-white p-5 shadow-soft">
             <div className="mb-4 flex items-center gap-3">
-              <span className="grid size-10 place-items-center rounded-xl bg-brand-50 text-lg text-brand-700" aria-hidden="true">▣</span>
+              <span className="grid size-10 place-items-center rounded-xl bg-brand-50 text-brand-700" aria-hidden="true"><svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3 8.5 4.5v9L12 21l-8.5-4.5v-9L12 3Z"/><path d="m3.8 7.7 8.2 4.5 8.2-4.5M12 12.2V21"/></svg></span>
               <div><h2 className="font-bold text-slate-800">قسم العُهد</h2><p className="text-xs text-slate-400">{employeeAssets.length} عهدة مرتبطة بالموظف</p></div>
             </div>
             {employeeAssets.length ? <ul className="divide-y divide-slate-100">
